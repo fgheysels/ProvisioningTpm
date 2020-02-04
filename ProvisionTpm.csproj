@@ -13,6 +13,7 @@
 
     <!-- Note: Applications should not need to import both protocols. This was done to simplify protocol selection within the sample.-->
     <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Transport.Amqp" Version="1.*" />
+    <PackageReference Include="Microsoft.Azure.Devices.Provisioning.Transport.Mqtt" Version="1.1.9" />
   </ItemGroup>
 
 </Project>
