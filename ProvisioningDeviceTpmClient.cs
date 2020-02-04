@@ -67,7 +67,7 @@ namespace ProvisioningTpm
             }
         }
 
-        private void VerifyRegistrationIdFormat(string v)
+        private static void VerifyRegistrationIdFormat(string v)
         {
             var r = new Regex("^[a-z0-9-]*$");
             if (!r.IsMatch(v))

@@ -1,4 +1,6 @@
-﻿namespace ProvisioningTpm
+﻿using System.Threading.Tasks;
+
+namespace ProvisioningTpm
 {
     // This example is based on:
     // https://github.com/Azure-Samples/azure-iot-samples-csharp/tree/master/provisioning/Samples/device
@@ -25,7 +27,7 @@
 
         private const string GlobalDeviceEndpoint = "global.azure-devices-provisioning.net";
         
-        public static int Main(string[] args)
+        public static async Task<int> Main(string[] args)
         {
             Console.WriteLine("Provision your TPM");
             Console.WriteLine("------------------");
@@ -87,8 +89,7 @@
                     ProvisioningDeviceClient.Create(GlobalDeviceEndpoint, _idScope, security, transport);
 
                 var client = new ProvisioningDeviceTpmClient(provClient, security, _skipTest);
-                client.RunTestAsync().GetAwaiter().GetResult();
-
+                await client.RunTestAsync();
                 Console.WriteLine("The registration is finalized on the TPM");
 
                 if (_skipTest != "Y")
