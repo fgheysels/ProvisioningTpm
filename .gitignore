@@ -222,3 +222,7 @@ api_reference/
 # install prefix
 install-deps/
 Testing/Temporary/CTestCostData.txt
+/.vs/ProvisionTpm/v16/Server/sqlite3/storage.ide-wal
+/.vs/ProvisionTpm/v16/Server/sqlite3/storage.ide-shm
+/.vs/ProvisionTpm/v16/Server/sqlite3/storage.ide
+/.vs/ProvisionTpm/v16/Server/sqlite3/db.lock
