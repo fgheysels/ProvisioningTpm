@@ -17,6 +17,9 @@
         // - pass an individual enrollment registration id for this device
         private static string _registrationId = string.Empty;
 
+        // - The DeviceId that will be used to identify the device in IoT Hub
+        private static string _deviceId = string.Empty; 
+
         // - If you want to skip the device message send test, pass 'Y'
         private static string _skipTest = string.Empty;
 
@@ -26,7 +29,7 @@
         {
             Console.WriteLine("Provision your TPM");
             Console.WriteLine("------------------");
-            Console.WriteLine("Usage: ProvisionTpm <IDScope> <RegistrationID> <SkipTest:Y|N>");
+            Console.WriteLine("Usage: ProvisionTpm <IDScope> <RegistrationID> <DeviceID> <SkipTest:Y|N>");
             Console.WriteLine("Run this 'As Adminsitrator' or 'SU'");
 
             if (string.IsNullOrWhiteSpace(_idScope) && (args.Length > 0))
@@ -39,16 +42,22 @@
                 _registrationId = args[1];
             }
 
-            if (string.IsNullOrWhiteSpace(_skipTest) && (args.Length > 2))
+            if (string.IsNullOrWhiteSpace(_deviceId) && (args.Length > 2))
             {
-                _skipTest = args[2].ToUpper();
+                _deviceId = args[2].ToUpper();
+            }
+
+            if (string.IsNullOrWhiteSpace(_skipTest) && (args.Length > 3))
+            {
+                _skipTest = args[3].ToUpper();
             }
 
             if (string.IsNullOrWhiteSpace(_idScope)
                     || string.IsNullOrWhiteSpace(_registrationId)
+                    || string.IsNullOrWhiteSpace(_deviceId)
                     || string.IsNullOrWhiteSpace(_skipTest))
             {
-                Console.WriteLine("Check if the parameters are corrent: ProvisionTpm <IDScope> <RegistrationID> <SkipTest:Y|N>");
+                Console.WriteLine("Check if the parameters are corrent: ProvisionTpm <IDScope> <RegistrationID> <DeviceID> <SkipTest:Y|N>");
                 return 1;
             }
 
