@@ -69,11 +69,20 @@ namespace ProvisioningTpm
 
         private static void VerifyRegistrationIdFormat(string v)
         {
-            var r = new Regex("^[a-z0-9-]*$");
-            if (!r.IsMatch(v))
+            if (RegistrationId.IsValid(v) == false)
             {
                 throw new FormatException("Invalid registrationId: The registration ID is alphanumeric, lowercase, and may contain hyphens");
             }
+        }
+    }
+
+    public static class RegistrationId
+    {
+        private static readonly Regex RegistrationIdFormat = new Regex("^[a-z0-9-]*$", RegexOptions.Compiled);
+
+        public static bool IsValid(string registrationId)
+        {
+            return RegistrationIdFormat.IsMatch(registrationId);
         }
     }
 }
