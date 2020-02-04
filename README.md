@@ -6,6 +6,15 @@ Make use of the TPM 2.0 in your Azure IoT Edge device to provision it using a Az
 
 This executable helps you to register your device TPM as an individual enrollment on a Azure Device Provisioning Service.
 
+## Building
+
+This program has been configured to use .NET Core 3, which makes it possible to build this application as a self contained executable.
+Creating a self-contained assembly can be done like this:
+
+```cmd
+dotnet publish -c Release -r win10-x64 /p:PublishSingleFile=true
+```
+
 ## Usage
 
 Pass Device Provisioning Service ID_Scope and RegistrationID as a command-prompt argument
