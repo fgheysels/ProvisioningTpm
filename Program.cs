@@ -89,7 +89,7 @@ namespace ProvisioningTpm
 
             using (var security = new SecurityProviderTpmHsm(_registrationId))
             {
-                using (var transport = new ProvisioningTransportHandlerMqtt(TransportFallbackType.TcpOnly))
+                using (var transport = new ProvisioningTransportHandlerAmqp(TransportFallbackType.TcpOnly))
                 {
                     // Note that the TPM simulator will create an NVChip file containing the simulated TPM state.
                     Console.WriteLine("Extracting endorsement key.");

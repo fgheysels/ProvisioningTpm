@@ -55,7 +55,7 @@ namespace ProvisioningTpm
 
             if (_skipTest != "Y")
             {
-                using (DeviceClient iotClient = DeviceClient.Create(result.AssignedHub, auth, TransportType.Mqtt))
+                using (DeviceClient iotClient = DeviceClient.Create(result.AssignedHub, auth, TransportType.Amqp))
                 {
                     Console.WriteLine("DeviceClient OpenAsync.");
                     await iotClient.OpenAsync().ConfigureAwait(false);
